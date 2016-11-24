@@ -1,0 +1,23 @@
+<template name="allergyRow">
+    <tr>
+        <td>
+            <input type="text" class="form-control" name="allergen{{id}}" id="allergen{{id}}" value="{{allergen}}"> 
+        </td>
+        <td>
+            <input type="text" class="form-control"  name="type{{id}}" id="type{{id}}" value="{{type}}"> 
+        </td>
+        <td>
+            <input type="text" class="form-control" name="description{{id}}" id="description{{id}}" value="{{description}}">
+        </td>
+        {{#unless isPatient}}
+        <td>
+            <button class="btn btn-info edit-allergy-detail" type="button" data-id={{id}}>
+                <i class="fa fa-paste"></i> Edit
+            </button>
+            <button class="btn btn-danger remove-allergy" type="button">
+                <i class="fa fa-trash-o"></i> <span class="bold">Delete</span>
+            </button>
+        </td>
+        {{/unless}}
+    </tr>
+</template>

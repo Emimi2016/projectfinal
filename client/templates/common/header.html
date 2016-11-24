@@ -1,0 +1,75 @@
+<template name="header">
+    <div id="header">
+<!--         {{#if isPatient}}
+        <div class="color-line-1"></div>
+        {{else}}
+        <div class="color-line-2"></div>
+            {{/if}} -->
+        <div class="col-md-2 width-200 no-margin no-padding">
+            <div id="logo" class="light-version">
+            </div>
+        </div>
+        <nav role="navigation">
+        <div class="col-md-2 no-margin no-padding">
+            <div class="main-menu">
+                <div class="header-link hide-menu"><i class="fa fa-bars"></i></div>
+                <div class="main-title">
+                    <span class="line"></span>
+                    {{#if isPatient}}
+                        <h1>Patient</h1>
+                        {{else}}
+                        <h1>Doctor</h1>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+            <!-- <div class="small-logo">
+                <span class="text-primary">CareLK APP</span>
+            </div> -->
+        <div class="col-md-7 no-margin no-padding">
+            <div class="top-bar-right">
+                <form role="search" class="navbar-form-custom search-icon" method="post" action="#">
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <i class="pe-7s-search"></i>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" placeholder="Search something special" class="form-control" name="search">
+                        </div>
+                    </div>
+                </form>
+                <div class="mobile-menu">
+                    <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse" data-target="#mobile-collapse">
+                        <i class="fa fa-chevron-down"></i>
+                    </button>
+                    <div class="collapse mobile-navbar" id="mobile-collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a class="" href="{{pathFor route='login'}}">Login</a>
+                            </li>
+                            <li>
+                                <!--<a class="" href="{{pathFor route='login'}}">Logout</a>-->
+                                <a class="logout" href="#">Logout</a>
+                            </li>
+                            <li>
+                                <a class="" href="{{pathFor route='profile'}}">Profile</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="navbar-right logout">
+                    <ul class="nav navbar-nav no-borders">
+                        <li class="dropdown">
+                            <a href="#" class="logout"> <!-- {{pathFor route='login'}}-->
+                                <i class="pe-7s-upload pe-rotate-90"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+    </nav>
+        <div class="clearfix"></div>
+    </div>
+</template>

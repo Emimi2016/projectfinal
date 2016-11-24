@@ -1,0 +1,71 @@
+<template name="healthProblemModal">
+    <div class="modal fade" id="newHealthProblemModal" tabindex="-1" role="dialog" aria-labelledby="Add new health problem">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="color-line"></div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Add new health problem</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="newHealthProblemForm">
+                        <input type="hidden" name="healthProblemID" id="healthProblemID" value="null">
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="hpDiagnostic">Diagnostic</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="hpDiagnostic" id="hpDiagnostic" required>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="hpSymptoms">Symptoms</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="hpSymptoms" id="hpSymptoms" required>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="hpMedObs">Medical Observation</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="hpMedObs" id="hpMedObs" required>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="hpDiseaseName">Disease Name</h4>
+                            <div class="divider"></div>
+                            <input class="form-control typeahead"
+                                   name="hpDiseaseName"
+                                   id="hpDiseaseName"
+                                   type="text"
+                                   autocomplete="off" spellcheck="off"
+                                   data-source="diseases">
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="hpNotes">Notes</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="hpNotes" id="hpNotes">
+                        </div>
+                        
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="vitalDate">Date</h4>
+                            <div class="divider"></div>
+                            <div class="input-group date" id="vitalDateGroup">
+                                    <span style="" class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                <input class="form-control" type="text" id="vitalDate" required>
+                            </div>
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button id="newHealthProblemButton" type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

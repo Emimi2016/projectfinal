@@ -1,0 +1,15 @@
+    <template name="calendar">
+    {{> pageHeader title="Calendar" desc="" category="App views" }}
+
+    {{#staggering}}
+        <div class="row">
+            <div class="text-right">
+                 <button type="button" class="btn btn-info" id="monthView">Month View</button>
+                <button type="button" class="btn btn-success" id="weekAgenda">Week Agenda</button>
+            </div>
+        </div>
+        <div class="row">
+            {{> fullcalendar calOptions}}
+        </div>
+    {{/staggering}}
+</template>

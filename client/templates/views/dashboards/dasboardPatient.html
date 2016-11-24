@@ -1,0 +1,142 @@
+<template name="dashboardPatient">
+
+            <div class="row">
+
+                <div class="col-sm-12 col-md-8">
+                    {{#panel title="My doctor"}}
+                        <div id="results" class="row table-responsive">
+                            <table id="doctorsTable" class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>First name</th>
+                                    <th>Last Namee</th>
+                                    <th>City</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {{#with doctor}}
+                                        <tr>
+                                            <td>{{persodata.fname}}</td>
+                                            <td>{{persodata.lname}}</td>
+                                            <td>{{persodata.city}}</td>
+                                        </tr>
+                                    {{/with}}
+                                </tbody>
+                            </table>
+                        </div>
+                    {{/panel}}
+                   </div> 
+
+
+              <div class="col-sm-12 col-md-8">
+                    {{#panel title="My appointment"}}
+                        <div id="results" class="row table-responsive">
+                            <table id="appointmentsTable" class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr>
+                             <th>Health issue</th> 
+                             <th>Comment</th> 
+                             <th>Start Date</th> 
+                             <th>status</th> 
+                             <th>pay</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                   {{#each appointments}} 
+                                   {{> appointmentRow}}
+                                    {{/each}} 
+                                        <tr>
+                                             <td>{{healthIssues}}</td>
+                                             <td>{{comments}}</td>
+                                            <td>{{formatedStartDate}}</td>
+                                            <td>{{status}}</td>
+                                            <td>{{pay}}</td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    {{/panel}}
+                    </div>
+
+                <div class="col-md-4">
+                    <div class="right_panel">
+                        {{#panel title="Next Appointment"}}
+                        <a href="{{pathFor route='calendar'}}">
+                            <div class="appointment">
+                            {{#with nextAppointment}}
+                                <div class="pull-left">
+                                    <span class="app-title">{{healthIssues}}</span>
+                                    <span class="venue">{{status}}</span>
+                                    <span class="timing">{{formatedAppointmentTime}}</span>
+                                </div>
+                                <div class="pull-right">
+                                    <span class="date">{{formatedAppointmentDay}}</span>
+                                    <span class="day">{{formatedAppointmentDayName}}</span>
+                                </div>
+                                <div class="clearfix"></div>
+                                <i class="fa fa-table o-35"></i>
+                            {{else}}
+                                <p>You don't have any scheduled appointments</p>
+                            {{/with}}
+                            </div>
+                        </a>
+                        {{/panel}}
+                        {{#panel title="Unread Mail"}}
+                        <a href="{{pathFor route='mailbox'}}">
+                            <div class="message text-color">
+                                {{#with unreadMail}}
+                                <h4 title="Ed Bott">{{from}}</h4>
+                                <div class="description">
+                                    <p>
+                                        <span class="subject">
+                                            {{subject}}
+                                        </span>
+                                        <div class="details">
+                                            {{message}}
+                                        </div>
+                                    </p>
+                                </div>
+                                <span class="pull-left">
+                                    <i class="pe-7s-mail"></i>
+                                </span>
+                                {{else}}
+                                    <p>You don't have any unread messages</p>
+                                {{/with}}
+                                <span class="pull-right msg-count">{{unreadCount}}</span>
+                            </div>
+                        </a>
+                        {{/panel}}
+                    </div>
+                  </div> 
+
+                    {{#panel title="Prescriptions" panelClass="" footer=""}}
+
+                        <div class="table-responsive">
+                            <table id="prescriptions" cellpadding="1" cellspacing="1" class="table table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Drug</th>
+                                    <th>Quantity</th>
+                                    <th>Med. Units</th>
+                                    <th>Refills</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {{#with medicalRecord}}
+                                        {{#each prescriptions}}
+                                        <tr>
+                                            <td>{{formatedStartDate}}</td>
+                                            <td>{{drug}}</td>
+                                            <td>{{quantity}}</td>
+                                            <td>{{medUnits}}</td>
+                                            <td>{{refills}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    {{/with}}
+                                </tbody>
+                            </table>
+                        </div>
+                    {{/panel}}
+                </div>
+</template>

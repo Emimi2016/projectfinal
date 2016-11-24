@@ -1,0 +1,87 @@
+<template name="vaccinationModal">
+    <div class="modal fade" id="newVaccinationModal" tabindex="-1" role="dialog" aria-labelledby="Vital signs">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="color-line"></div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Vaccinations</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="vaccinationForm">
+                        <input type="hidden" name="vaccinationID" id="vaccinationID" value="null">
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="vaccName">Vaccine Name</h4>
+                            <div class="divider"></div>
+                            <input class="form-control typeahead"
+                                   name="vaccName"
+                                   id="vaccName"
+                                   type="text"
+                                   data-select="vaccine"
+                                   autocomplete="off" spellcheck="off"
+                                   data-source="vaccineName">
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="vaccLotNumber">Lot Number</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="vaccLotNumber" id="vaccLotNumber" required>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="vaccManufacturer">Manufacturer</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="vaccManufacturer" id="vaccManufacturer" required>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="vaccDateAdmin">Date Administered</h4>
+                            <div class="divider"></div>
+                            <div class="input-group date" id="vaccDateAdminGroup">
+                                    <span style="" class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                <input class="form-control" type="text" id="vaccDateAdmin" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="giveDate">Given Date</h4>
+                            <div class="divider"></div>
+                            <div class="input-group date" id="giveDateGroup">
+                                    <span style="" class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                <input class="form-control" type="text" id="givenDate" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="expiryDate">Expiry Date</h4>
+                            <div class="divider"></div>
+                            <div class="input-group date" id="expiryDateGroup">
+                                    <span style="" class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                <input class="form-control" type="text" id="expiryDate" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="vaccDrugRoute">Drug Route</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="vaccDrugRoute" id="vaccDrugRoute" required>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button id="vaccinationButton" type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

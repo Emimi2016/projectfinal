@@ -1,0 +1,26 @@
+<template name="prescriptionRow">
+    <tr>
+        <td>{{formstartDate}}</td>
+        <td>{{drug}}</td>
+        <td>{{quantity}}</td>
+        <td>{{medUnits}}</td>
+        <td>{{desc}}</td>
+        <td>{{refills}}</td>
+        <td>{{subAllowed}}</td>
+        {{#if isPatient}}
+        <td>
+            <button {{disabled}} type="button" class="btn btn-block btn-success renewal">
+                Renew
+            </button> 
+        </td>
+        {{else}}
+        <td>
+            {{#if askForRenewal}}
+            <button type="button" class="btn btn-info confirm">
+                <i class="glyphicon glyphicon-repeat"></i>&nbsp;Renew
+            </button>
+            {{/if}}
+        </td>
+        {{/if}}
+    </tr>
+</template>

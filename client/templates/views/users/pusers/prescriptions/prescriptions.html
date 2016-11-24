@@ -1,0 +1,23 @@
+<template name="prescriptions">
+    <div class="table-responsive ">
+        <table id="prescriptionsTable" class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Starting Date</th>
+                <th>Drug</th>
+                <th>Quantity</th>
+                <th>Medicine units</th>
+                <th>Description</th>
+                <th>Refills</th>
+                <th>Substitution allowed</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                {{#each prescriptions}}
+                    {{> prescriptionRow}}
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>

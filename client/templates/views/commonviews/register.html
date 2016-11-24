@@ -1,0 +1,104 @@
+<template name="register">
+
+
+    <div class="register-container">
+        <div class="row">
+            <div class="col-md-2 col-sm-12 col-xs-6 logo-area">
+            </div>
+            <div class="col-md-10 col-sm-12 col-xs-6 ">
+                <div class="text-center m-b-md">
+                    <h2>CareLK Health Platform</h2>
+                </div>
+            </div>
+        </div>
+        <div class="color-blue-line">
+    </div>
+        <div class="row header-title">
+            <div class="col-md-14 col-sm-12 col-xs-6">
+                <div class="text-center m-b-md">
+                    <h3>Registration</h3>
+                    <small>Create your account. You will receive a confirmation email.</small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-14">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <form role="form" id="registerForm" method="post" action="#">
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label class="control-label" for="firstname">Firstname</label>
+                                    <input type="" value="" id="firstname" class="form-control" name="firstname" required="" placeholder="First Name"  >
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <label class="control-label" for="lastname">Lastname</label>
+                                    <input type="" value="" id="lastname" class="form-control" name="lastname" required="" placeholder="Last Name" >
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <label class="control-label" for="username">Username</label>
+                                    <input type="" value="" id="username" class="form-control" name="username" required="" placeholder="User Name" >
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <label class="control-label" for="mobilenumber">Mobile number</label>
+                                    <input type="" value="" id="mobilenumber" class="form-control" name="mobilenumber" required="" placeholder="Mobile Number" >
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <label class="control-label" for="email">Email</label>
+                                    <input type="" value="" id="email" class="form-control" name="email" required=""  placeholder="Email" >
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <label class="control-label" for="skype">Skype</label>
+                                    <input type="" value="" id="skype" class="form-control" name="skype" required=""  placeholder="Skype" >
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label class="control-label" for="password" >Password</label>
+                                    <input type="password" value="" id="password" class="form-control" name="password" required="password2" placeholder="Password" >
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label class="control-label" for="password2">Repeat Password</label>
+                                    <input type="password" value="" id="password2" class="form-control" name="password2" required="" placeholder="Password" >
+                                </div>
+
+
+                                <div class="form-group col-lg-12 text-center">
+                                    <div data-toggle="buttons" class="btn-group">
+                                        <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group col-lg-12 text-center">
+                                    <div data-toggle="buttons" class="btn-group">
+                                        <label class="btn btn-warning2 btn-outline active text-center">
+                                            <i class="fa fa-group"></i>
+                                            <input type="radio" id="user" name="profile" value="1" checked="checked"> Register as a patient
+                                        </label>
+                                        <style>#asdoctor{display:none !important;}</style>
+                                        <label id="asdoctor" class="btn btn-info btn-outline">
+                                            <i class="fa fa-medkit"></i>
+                                            <input type="radio" id="carer" name="profile" value="2"> Register as a carer
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group col-lg-12 text-left">
+
+                                        <input type="checkbox" class="i-checks" required="" name="termsofuse" id="termsofuse" > I have read and accepted the <a href="{{pathFor route='termsOfUse'}}" >terms of use</a>.
+                                        <label class="control-label" for="termsofuse"> </label>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <input type="submit" class="btn btn-success" value="Register" />
+                                <input type="submit" class="btn btn-default cancel" formnovalidate name="cancel" value="Cancel" />
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

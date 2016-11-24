@@ -1,0 +1,94 @@
+<template name="patient">
+    {{#with currPatient}} {{> pageHeader title=currPatientFullname category="App views" }} {{/with}} 
+    
+      <ul class="nav nav-tabs nav-justified">
+                    <li class="active"><a data-toggle="tab" href="#tab-1">Vital signs</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-2">Allergies</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-3">Vaccinations</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-4">Prescriptions</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-5">Health Problems</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-6">Bills</a></li>
+                </ul>
+        
+        
+<div class="tab-content">            
+    <div id="tab-1" class="tab-pane active">
+        <div class="row">
+            <div class="col-lg-12">
+                {{#panel title="Vital signs" built=true color="hblue"}}
+                <button style="margin-bottom: 10px" class="btn btn-primary" id="newVitalRecord" type="button">
+                    <i class="fa fa-plus"></i> Add
+                </button>
+                {{#with medicalRecord}} {{> vitalSigns}} {{/with}} {{/panel}}
+            </div>
+        </div>
+    </div>    
+        
+    <div id="tab-2" class="tab-pane">   
+        <div class="row">
+            <div class="col-lg-12">
+                {{#panel title="Allergies" built=true color="hblue"}}
+                <button style="margin-bottom: 10px" class="btn btn-primary" id="newAllergy" type="button">
+                    <i class="fa fa-plus"></i> Add
+                </button>
+                {{#with medicalRecord}} {{> allergies}} {{/with}} {{/panel}}
+            </div>
+        </div>
+    </div>    
+        
+      <div id="tab-3" class="tab-pane">      
+        <div class="row">
+            <div class="col-lg-12">
+                {{#panel title="Vaccinations" built=true color="hblue"}}
+                <button style="margin-bottom: 10px" class="btn btn-primary" id="newVaccination" type="button">
+                    <i class="fa fa-plus"></i> Add
+                </button>
+                {{#with medicalRecord}} {{> vaccinations}} {{/with}} {{/panel}}
+            </div>
+        </div>
+    </div>    
+        
+    <div id="tab-4" class="tab-pane">      
+        <div class="row">
+            <div class="col-lg-12">
+                {{#panel title="Prescriptions" built=true color="hblue"}}
+                <button style="margin-bottom: 10px" class="btn btn-primary" id="newPrescription" type="button">
+                    <i class="fa fa-plus"></i> Add
+                </button>
+                {{#with medicalRecord}} {{> prescriptions}} {{/with}} {{/panel}}
+            </div>
+        </div>
+    </div>    
+        
+        
+    <div id="tab-5" class="tab-pane">      
+        <div class="row">
+            <div class="col-lg-12">
+                {{#panel title="Health problems" built=true color="hblue"}}
+                <button style="margin-bottom: 10px" class="btn btn-primary" id="newHealthProblem" type="button">
+                    <i class="fa fa-plus"></i> Add
+                </button>
+                {{#with medicalRecord}} {{> healthProblems}} {{/with}} {{/panel}}
+            </div>
+        </div>
+    </div>
+    
+    <div id="tab-6" class="tab-pane">      
+        <div class="row">
+            <div class="col-lg-12">
+                
+                {{#panel title="Bills" built=true color="hblue"}}
+                <button style="margin-bottom: 10px" class="btn btn-primary" id="newBill" type="button">
+                    <i class="fa fa-plus"></i> Add
+                </button>
+                 {{> reactiveTable settings=settings}}
+
+                {{#with medicalRecord}} {{> bills}} {{/with}} {{/panel}}
+                
+            </div>
+        </div>
+    </div>
+ </div>
+    
+ 
+</template>

@@ -1,0 +1,58 @@
+<template name="reqNewAppointmentModal">
+    <div class="modal fade" id="reqAppointment" tabindex="-1" role="dialog" aria-labelledby="Request Appointment">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="color-line"></div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Request new appointment</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="dateInfo"></p>
+                    <form role="form"  id="reqAppointmentForm" method="post" action="#">
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="appHealthIssues">State the health issues</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="appHealthIssues" id="appHealthIssues" required>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="appComments">Comments</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="appComments" id="appComments" required>
+                        </div>
+                        {{#unless isPatient}}
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="patient">Choose Patient</h4>
+                            <div class="divider"></div>
+                            <input class="form-control typeahead"
+                                   name="patient"
+                                   id="patient"
+                                   type="text"
+                                   placeholder="choose patient"
+                                   data-select="suggestionId"
+                                   autocomplete="on" spellcheck="off"
+                                   data-source="patients">
+                        </div>
+                        {{/unless}}
+                        <div class="divider"></div>
+                        <div class="form-group">
+                            <div class="checkbox checkbox-single checkbox-danger">
+                                <input value="0" type="checkbox" name="appUrgent" id="appUrgent">
+                                <label for="appUrgent" class="text-danger">Urgent</label>
+                            </div>
+                        </div>
+                                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button id="reqAppointmentButton" type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                        <input type="text" name="appStartDate" id="appStartDate" hidden="hidden">
+                        <input type="text" name="appEndDate" id="appEndDate" hidden="hidden">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,122 @@
+<template name="editAppointmentModal">
+    <div class="modal fade" id="editAppointment" tabindex="-1" role="dialog" aria-labelledby="Edit Appointment">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="color-line"></div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Edit appointment</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form" id="modForm" method="post" action="#">
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3">Appointment summary</h4>
+                            <div class="divider"></div>
+                            <ul>
+                                <li><b>Start date:</b> {{formatedStartDate}}</li>
+                                <li><b>End date:</b> {{formatedEndDate}}</li>
+                                <li><b>Health issues:</b> {{healthIssues}}</li>
+                                <li><b>Comments:</b> {{comments}}</li>
+                                <li><b>Visit type:</b> {{visitType}} visit</li>
+                            </ul>
+                        </div>
+                        {{#if noResponse}}
+                        <p class="text-warning">
+                            The other party did not respond yet. Please wait or:
+                        </p>
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3">Do you want to cancel appointment?</h4>
+                            <div class="radio radio-success">
+                                <input type="radio" name="cancelation" id="yes" value="yes">
+                                <label>Yes</label>
+                            </div>
+                            <div class="radio radio-success">
+                                <input type="radio" name="cancelation" id="no" value="no">
+                                <label>No</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button id="reqAppointmentButton" type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                        {{else}}
+                        {{#if noNewDates}}
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="confirmation">Do you want to confirm appointment?</h4>
+                            <div class="radio radio-success">
+                                <input type="radio" name="confirmation" id="confirmed" value="yes">
+                                <label>Yes</label>
+                            </div>
+                            <div class="radio radio-success">
+                                <input type="radio" name="confirmation" id="canceled" value="no">
+                                <label>No</label>
+                            </div>
+                        </div>
+                        {{else}}
+                        {{#if modification}}
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="modification">Do you want to cancel or modify appointment?</h4>
+                            <div class="radio radio-success">
+                                <input type="radio" name="modification" id="modCancel" value="cancel">
+                                <label>Cancel</label>
+                            </div>
+                            <div class="radio radio-success">
+                                <input type="radio" name="modification" id="modEdit" value="edit">
+                                <label>Modify</label>
+                            </div>
+                        </div>
+                        {{#if confirmed}}
+                        <p class="text-danger">Warning! You are about to modify already confirmed appointment.</p>
+                        {{/if}}
+                        {{else}}
+                        <div class="form-group">
+                            <p class="text-info">The other party did not confirm
+                                your date for appointment, instead new dates are proposed.<br>Please pick one</p>
+                            {{#if newDate1}}
+                            <div class="radio radio-success">
+                                <input type="radio" name="newDates" id="newDate1" value="{{newDate1}}">
+                                <label>{{formatedNewDate1}}</label>
+                            </div>
+                            {{/if}}
+                            {{#if newDate2}}
+                            <div class="radio radio-success">
+                                <input type="radio" name="newDates" id="newDate2" value="{{newDate2}}">
+                                <label>{{formatedNewDate2}}</label>
+                            </div>
+                            {{/if}}
+                            {{#if newDate3}}
+                            <div class="radio radio-success">
+                                <input type="radio" name="newDates" id="newDate3" value="{{newDate3}}">
+                                <label>{{formatedNewDate3}}</label>
+                            </div>
+                            {{/if}}
+                        </div>
+                        <p class="text-info">Or...</p>
+                        <div class="form-group">
+                            <div class="radio radio-success">
+                                <input type="radio" name="newDates" id="modCancel" value="cancel">
+                                <label class="text-danger">Cancel the appointment</label>
+                            </div>
+                            <div class="radio radio-success">
+                                <input type="radio" name="newDates" id="modEdit" value="edit">
+                                <label class="text-warning">Propose your new dates for appointment</label>
+                            </div>
+                        </div>
+                        {{/if}}
+                        {{/if}}
+                        {{#if propose}}
+                            {{> newDates}}
+                        {{/if}}
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button id="reqAppointmentButton" type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                        {{/if}}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

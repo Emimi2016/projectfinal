@@ -1,0 +1,25 @@
+<template name="telemedicine">
+    {{> pageHeader title="Telemedicine" desc="" category="App views" }}
+
+    {{#staggering}}
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                {{#unless isPatient}}
+                <div class="col-md-12">
+                <div class="well well-lg well-danger danger ">
+                    <h1>Skype Timer Is In Idle State.</h1>
+                </div>
+                </div>
+               {{> reactiveTable settings=settings}}
+                {{/unless}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div id="call_32" style="width:150px;background-color:#0094ff"></div>
+            </div>
+        </div>
+    </div>
+    {{/staggering}}
+</template>

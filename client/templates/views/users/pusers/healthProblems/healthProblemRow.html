@@ -1,0 +1,36 @@
+<template name="healthProblemRow">
+   <tr>
+        <td> 
+            <input type="text" name="diagnostic{{id}}" id="diagnostic{{id}}" value="{{diagnostic}}" style="width: 200px;"> 
+        </td>
+        <td> 
+            <input type="text" name="symptoms{{id}}" id="symptoms{{id}}" value="{{symptoms}}" style="width: 200px;">
+        </td>
+        <td> 
+            <input type="text" name="medObservation{{id}}" id="medObservation{{id}}" value="{{medObservation}}" style="width: 200px;">
+        </td>
+        <td> 
+            <input type="text" name="diseaseName{{id}}" id="diseaseName{{id}}" value="{{diseaseName}}" style="width: 200px;">
+        </td>
+        <td> 
+            <div class="input-group date">
+                    <span style="" class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                <input class="form-control" type="text" name="formatedDate{{id}}" id="formatedDate{{id}}" value="{{formatedDate}}" style="width: 200px;">
+            </div>
+            <!--
+            <input type="text" name="formatedDate{{id}}" id="formatedDate{{id}}" value="{{formatedDate}}" style="width: 225px;">-->
+        </td>
+        {{#unless isPatient}}
+            <td>
+                <button class="btn btn-info edit-vital-sign" type="button" data-id={{id}}>
+                    <i class="fa fa-paste"></i> Edit
+                </button>
+                <button class="btn btn-danger remove-vital-sign" type="button" data-id={{id}}>
+                    <i class="fa fa-trash-o"></i> <span class="bold">Delete</span>
+                </button>
+            </td>
+        {{/unless}}
+    </tr>
+</template>

@@ -1,0 +1,22 @@
+<template name="vaccinations">
+    <div class="table-responsive ">
+        <table id="vaccinationsTable" class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Date Administered</th>
+                <th>Given Date</th>
+                <th>Expiry Date</th>
+                <th>Drug Route</th>
+                {{#unless isPatient}}
+                <th>Actions</th>
+                {{/unless}}
+            </tr>
+            </thead>
+            <tbody>
+                {{#each vaccinations}}
+                    {{> vaccinationRow}}
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>

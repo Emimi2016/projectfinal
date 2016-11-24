@@ -1,0 +1,909 @@
+<template name="personalInformation">
+    <form id="perso-provider-form" method="post" class="form-horizontal" action="#">
+        <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="firstName">First Name</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" name="firstName" id="firstName" value="{{persodata.fname}}" required>
+            </div>
+
+            <label class="col-sm-2 control-label" for="lastName">Last Name</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" name="lastName" id="lastName" value="{{persodata.lname}}" required>
+            </div>
+        </div>
+        
+         {{#if patient}}
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Gender</label>
+            <div class="col-sm-3">
+                <div class="radio radio-male">
+                    <input type="radio" name="gender" id="male" value="M" {{checkGender 'M'}}>
+                    <label>Male</label>
+                </div>
+                <div class="radio radio-female">
+                    <input type="radio" name="gender" id="female" value="F" {{checkGender 'F'}}>
+                    <label>Female</label>
+                </div>
+             </div>
+          </div> 
+             {{/if}}
+        
+        {{#unless patient}}
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Gender</label>
+            <div class="col-sm-3">
+                <div class="radio radio-male">
+                    <input type="radio" name="gender" id="male" value="M" {{checkGender 'M'}}>
+                    <label>Male</label>
+                </div>
+                <div class="radio radio-female">
+                    <input type="radio" name="gender" id="female" value="F" {{checkGender 'F'}}>
+                    <label>Female</label>
+                </div>
+             </div>
+            <label class="col-sm-2 control-label">Job</label>        
+                   <div class="col-sm-3">
+                <div class="radio radio-gp">
+                    <input type="radio" name="job" id="gp" value="GP" {{checkJob 'GP'}}>
+                    <label>GP</label>
+                </div>
+                <div class="radio radio-specialist">
+                    <input type="radio" name="job" id="specialist" value="Specialist" {{checkJob 'Specialist'}}>
+                    <label>Specialist</label>
+                </div>
+            </div>
+        </div>
+        {{/unless}}
+        
+	{{#if patient}}
+	 <div class="form-group">
+            <label class="col-sm-2 control-label" for="birthday">D.O.B.</label>
+            <div class="col-sm-4 birthdayPicker select2-container">
+                <div id="birthday" required aria-required="true"></div>
+            </div>
+            <label class="col-sm-1 control-label" for="age">Age</label>
+            <div class="col-sm-1">
+                <input type="text" class="form-control"  name="age" id="age" disabled>
+            </div>
+        </div>
+        <div class="form-group hidden" id="minor">
+            <label class="col-sm-2 control-label" for="mothersName">Mothers Name</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" name="mothersName" id="mothersName" value="{{persodata.mothersName}}" required="">
+            </div>
+            <label class="col-sm-2 control-label" for="fathersName">Fathers Name</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" name="fathersName" id="fathersName" value="{{persodata.fathersName}}" required="">
+            </div>
+        </div>
+        {{/if}}
+        
+        {{#unless patient}}
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="speciality">Speciality</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control"  name="speciality" id="speciality" value="{{persodata.speciality}}">
+            </div>
+        </div>
+        {{/unless}}
+ 
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for ="city">City</label>
+            <div class="col-sm-4">
+                 <input class="form-control" type="text" name="city" id="city" value="{{persodata.city}}" required>
+            </div>
+            <label class="col-sm-2 control-label" for ="country">Country</label>
+            <div class="col-sm-4">
+                 <input class="form-control" type="text" name="country" id="country" value="{{persodata.country}}" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for ="language">language</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="language" id="language" value="{{persodata.language}}" required>
+            </div>
+        </div>
+
+        {{#unless patient}}
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Work Schedule</label>
+            <div class="col-sm-10">
+			
+	 <div class="form-group">
+	 	<div class="col-sm-5">			
+					<div class="checkbox checkbox-single checkbox-success">
+                    <input value="80" type="checkbox" name="workingDays" id="sundays2" {{checkWorkDay 'sundays2'}}>
+                    <label> Sundays Session 2</label>
+                </div>
+                <div class="row hidden" id="sundays2-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="sundays2From" value="{{persodata.workTime.sundays2.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="sundays2To" value="{{persodata.workTime.sundays2.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+					<div class="checkbox checkbox-single checkbox-success">
+                    <input value="81" type="checkbox" name="workingDays" id="sundays3" {{checkWorkDay 'sundays3'}}>
+                    <label> Sundays Session 3</label>
+                </div>
+                <div class="row hidden" id="sundays3-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="sundays3From" value="{{persodata.workTime.sundays3.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="sundays3To" value="{{persodata.workTime.sundays3.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="checkbox checkbox-single checkbox-success">
+                    <input value="82" type="checkbox" name="workingDays" id="sundays4" {{checkWorkDay 'sundays4'}}>
+                    <label> Sundays Session 4</label>
+                </div>
+                <div class="row hidden" id="sundays4-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="sundays4From" value="{{persodata.workTime.sundays4.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="sundays4To" value="{{persodata.workTime.sundays4.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+                <div class="checkbox checkbox-single checkbox-success">
+                    <input value="0" type="checkbox" name="workingDays" id="sunday" {{checkWorkDay 'sunday'}}>
+                    <label> Sunday</label>
+                </div>
+                <div class="row hidden" id="sunday-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="sundayFrom" value="{{persodata.workTime.sunday.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="sundayTo" value="{{persodata.workTime.sunday.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+         </div>       
+		
+		<div class="col-sm-5">		
+					<div class="checkbox checkbox-single checkbox-success">
+                    <input value="31" type="checkbox" name="workingDays" id="mondays2" {{checkWorkDay 'mondays2'}}>
+                    <label> Mondays Session 2</label>
+                </div>
+                <div class="row hidden" id="mondays2-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="mondays2From" value="{{persodata.workTime.mondays2.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="mondays2To" value="{{persodata.workTime.mondays2.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+					<div class="checkbox checkbox-single checkbox-success">
+                    <input value="32" type="checkbox" name="workingDays" id="mondays3" {{checkWorkDay 'mondays3'}}>
+                    <label> Mondays Session 3</label>
+                </div>
+                <div class="row hidden" id="mondays3-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="mondays3From" value="{{persodata.workTime.mondays3.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="mondays3To" value="{{persodata.workTime.mondays3.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="checkbox checkbox-single checkbox-success">
+                    <input value="33" type="checkbox" name="workingDays" id="mondays4" {{checkWorkDay 'mondays4'}}>
+                    <label> Mondays Session 4</label>
+                </div>
+                <div class="row hidden" id="mondays4-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="mondays4From" value="{{persodata.workTime.mondays4.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="mondays4To" value="{{persodata.workTime.mondays4.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				
+                <div class="checkbox checkbox-success">
+                    <input value="1" type="checkbox" name="workingDays" id="monday" {{checkWorkDay 'monday'}}>
+                    <label>Monday</label>
+                </div>
+                <div class="row hidden" id="monday-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="mondayFrom" value="{{persodata.workTime.monday.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="mondayTo" value="{{persodata.workTime.monday.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+         </div>
+        </div>
+				
+	 <div class="form-group">
+	 	<div class="col-sm-5">
+					<div class="checkbox checkbox-single checkbox-success">
+                    <input value="41" type="checkbox" name="workingDays" id="tuesdays2" {{checkWorkDay 'tuesdays2'}}>
+                    <label> Tuesday Session 2</label>
+                </div>
+                <div class="row hidden" id="tuesdays2-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="tuesdays2From" value="{{persodata.workTime.tuesdays2.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div> 
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="tuesdays2To" value="{{persodata.workTime.tuesdays2.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+					<div class="checkbox checkbox-single checkbox-success">
+                    <input value="42" type="checkbox" name="workingDays" id="tuesdays3" {{checkWorkDay 'tuesdays3'}}>
+                    <label> Tuesday Session 3</label>
+                </div>
+                <div class="row hidden" id="tuesdays3-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="tuesdays3From" value="{{persodata.workTime.tuesdays3.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="tuesdays3To" value="{{persodata.workTime.tuesdays3.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="checkbox checkbox-single checkbox-success">
+                    <input value="43" type="checkbox" name="workingDays" id="tuesdays4" {{checkWorkDay 'tuesdays4'}}>
+                    <label> Tuesday Session 4</label>
+                </div>
+                <div class="row hidden" id="tuesdays4-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="tuesdays4From" value="{{persodata.workTime.tuesdays4.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="tuesdays4To" value="{{persodata.workTime.tuesdays4.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				
+                <div class="checkbox checkbox-single checkbox-success">
+                    <input value="2" type="checkbox" name="workingDays" id="tuesday" {{checkWorkDay 'tuesday'}}>
+                    <label>Tuesday</label>
+                </div>
+                <div class="row hidden" id="tuesday-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="tuesdayFrom" value="{{persodata.workTime.tuesday.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="tuesdayTo" value="{{persodata.workTime.tuesday.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+             </div>   
+				
+		<div class="col-sm-5">		
+				<div class="checkbox checkbox-single checkbox-success">
+                    <input value="72" type="checkbox" name="workingDays" id="wednesdays2" {{checkWorkDay 'wednesdays2'}}>
+                    <label> Wednesday Session 2</label>
+                </div>
+                <div class="row hidden" id="wednesdays2-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="wednesdays2From" value="{{persodata.workTime.wednesdays2.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div> 
+                    </div>
+                    <div class="col-sm-3">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="wednesdays2To" value="{{persodata.workTime.wednesdays2.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+					<div class="checkbox checkbox-single checkbox-success">
+                    <input value="73" type="checkbox" name="workingDays" id="wednesdays3" {{checkWorkDay 'wednesdays3'}}>
+                    <label> Wednesday Session 3</label>
+                </div>
+                <div class="row hidden" id="wednesdays3-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="wednesdays3From" value="{{persodata.workTime.wednesdays3.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="wednesdays3To" value="{{persodata.workTime.wednesdays3.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="checkbox checkbox-single checkbox-success">
+                    <input value="74" type="checkbox" name="workingDays" id="wednesdays4" {{checkWorkDay 'wednesdays4'}}>
+                    <label> Wednesday Session 4</label>
+                </div>
+                <div class="row hidden" id="wednesdays4-workingHours">
+                    <div class="col-sm-3">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="wednesdays4From" value="{{persodata.workTime.wednesdays4.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="wednesdays4To" value="{{persodata.workTime.wednesdays4.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+                <div class="checkbox checkbox-single checkbox-success">
+                    <input value="3" type="checkbox" name="workingDays" id="wednesday" {{checkWorkDay 'wednesday'}}>
+                    <label>Wednesday</label>
+                </div>
+                <div class="row hidden" id="wednesday-workingHours">
+                    <div class="col-sm-3">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="wednesdayFrom" value="{{persodata.workTime.wednesday.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="wednesdayTo" value="{{persodata.workTime.wednesday.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+         </div>
+        </div> 
+	
+	 <div class="form-group">
+	 	<div class="col-sm-5">			
+				<div class="checkbox checkbox-single checkbox-success">
+                    <input value="82" type="checkbox" name="workingDays" id="thursdays2" {{checkWorkDay 'thursdays2'}}>
+                    <label> Thursday Session 2</label>
+                </div>
+                <div class="row hidden" id="thursdays2-workingHours">
+                    <div class="col-sm-3">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="thursdays2From" value="{{persodata.workTime.thursdays2.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div> 
+                    </div>
+                    <div class="col-sm-3">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="thursdays2To" value="{{persodata.workTime.thursdays2.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+					<div class="checkbox checkbox-single checkbox-success">
+                    <input value="83" type="checkbox" name="workingDays" id="thursdays3" {{checkWorkDay 'thursdays3'}}>
+                    <label> Thursday Session 3</label>
+                </div>
+                <div class="row hidden" id="thursdays3-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="thursdays3From" value="{{persodata.workTime.thursdays3.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="thursdays3To" value="{{persodata.workTime.thursdays3.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="checkbox checkbox-single checkbox-success">
+                    <input value="84" type="checkbox" name="workingDays" id="thursdays4" {{checkWorkDay 'thursdays4'}}>
+                    <label> Thursday Session 4</label>
+                </div>
+                <div class="row hidden" id="thursdays4-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="thursdays4From" value="{{persodata.workTime.thursdays4.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="thursdays4To" value="{{persodata.workTime.thursdays4.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+                <div class="checkbox checkbox-single checkbox-success">
+                    <input value="4" type="checkbox" name="workingDays" id="thursday" {{checkWorkDay 'thursday'}}>
+                    <label>Thursday</label>
+                </div>
+                <div class="row hidden" id="thursday-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="thursdayFrom" value="{{persodata.workTime.thursday.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="thursdayTo" value="{{persodata.workTime.thursday.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+               </div> 
+		
+		<div class="col-sm-5">		
+				<div class="checkbox checkbox-single checkbox-success">
+                    <input value="112" type="checkbox" name="workingDays" id="fridays2" {{checkWorkDay 'fridays2'}}>
+                    <label> Friday Session 2</label>
+                </div>
+                <div class="row hidden" id="fridays2-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="fridays2From" value="{{persodata.workTime.fridays2.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div> 
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="fridays2To" value="{{persodata.workTime.fridays2.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+					<div class="checkbox checkbox-single checkbox-success">
+                    <input value="113" type="checkbox" name="workingDays" id="fridays3" {{checkWorkDay 'fridays3'}}>
+                    <label> Friday Session 3</label>
+                </div>
+                <div class="row hidden" id="fridays3-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="fridays3From" value="{{persodata.workTime.fridays3.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="fridays3To" value="{{persodata.workTime.fridays3.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="checkbox checkbox-single checkbox-success">
+                    <input value="114" type="checkbox" name="workingDays" id="fridays4" {{checkWorkDay 'fridays4'}}>
+                    <label> Friday Session 4</label>
+                </div>
+                <div class="row hidden" id="fridays4-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="fridays4From" value="{{persodata.workTime.fridays4.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="fridays4To" value="{{persodata.workTime.fridays4.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				
+                <div class="checkbox checkbox-single checkbox-success">
+                    <input value="5" type="checkbox" name="workingDays" id="friday" {{checkWorkDay 'friday'}}>
+                    <label>Friday</label>
+                </div>
+                <div class="row hidden" id="friday-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="fridayFrom" value="{{persodata.workTime.friday.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="fridayTo" value="{{persodata.workTime.friday.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+         </div>
+       </div>  
+				
+				<div class="checkbox checkbox-single checkbox-success">
+                    <input value="112" type="checkbox" name="workingDays" id="saturdays2" {{checkWorkDay 'saturdays2'}}>
+                    <label> Saturday Session 2</label>
+                </div>
+                <div class="row hidden" id="saturdays2-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="saturdays2From" value="{{persodata.workTime.saturdays2.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div> 
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="saturdays2To" value="{{persodata.workTime.saturdays2.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				
+				
+					<div class="checkbox checkbox-single checkbox-success">
+                    <input value="113" type="checkbox" name="workingDays" id="saturdays3" {{checkWorkDay 'saturdays3'}}>
+                    <label> Saturday Session 3</label>
+                </div>
+                <div class="row hidden" id="saturdays3-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="saturdays3From" value="{{persodata.workTime.saturdays3.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="saturdays3To" value="{{persodata.workTime.saturdays3.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="checkbox checkbox-single checkbox-success">
+                    <input value="114" type="checkbox" name="workingDays" id="saturdays4" {{checkWorkDay 'saturdays4'}}>
+                    <label> Saturday Session 4</label>
+                </div>
+                <div class="row hidden" id="saturdays4-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="saturdays4From" value="{{persodata.workTime.saturdays4.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="saturdays4To" value="{{persodata.workTime.saturdays4.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+				
+				
+                <div class="checkbox checkbox-single checkbox-success">
+                    <input value="6" type="checkbox" name="workingDays" id="saturday" {{checkWorkDay 'saturday'}}>
+                    <label>Saturday</label>
+                </div>
+                <div class="row hidden" id="saturday-workingHours">
+                    <div class="col-sm-5">
+                        <span>From:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="saturdayFrom" value="{{persodata.workTime.saturday.from}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>To:</span>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" id="saturdayTo" value="{{persodata.workTime.saturday.to}}">
+                            <span class="input-group-addon colpick">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+
+        {{/unless}}
+        {{#if patient}}
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="homeNumber">Home number</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" name="homeNumber" id="homeNumber" value="{{persodata.homeNumber}}">
+            </div>
+
+            <label class="col-sm-2 control-label" for="mobileNumber">Mobile number</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" name="mobileNumber" id="mobileNumber" value="{{persodata.mobileNumber}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-4">
+                <input type="email" placeholder="Enter email" class="form-control" required="" aria-required="true" name="email" id="email" value="{{persodata.email}}">
+            </div>
+            <label class="col-sm-2 control-label">Skype</label>
+            <div class="col-sm-4">
+                <input type="skype" placeholder="Enter skype account" class="form-control" required="" aria-required="true" name="skype" id="skype" value="{{persodata.skype}}">
+            </div>
+        </div>
+
+
+        <div class="hr-line-dashed"></div>
+        <p class="text-center">
+            <b>Person to call in case of emergency</b>
+        </p>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="emergencyName">Name</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" name="emergencyName" id="emergencyName" value="{{persodata.emergencyName}}">
+            </div>
+            <label class="col-sm-2 control-label" for="emergencyNumber">Phone Number</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" name="emergencyNumber" id="emergencyNumber" value="{{persodata.emergencyNumber}}">
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+
+        {{/if}}
+
+        <div class="hr-line-dashed"></div>
+
+        <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-2">
+                <button class="btn btn-primary" id="persoInfoBtn" type="submit">Save changes</button>
+            </div>
+        </div>
+        <input id="zero" type="text" value="0" hidden="hidden" />
+    </form>
+</template>

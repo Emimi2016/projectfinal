@@ -1,0 +1,24 @@
+<template name="profile">
+
+    {{> pageHeader title="Profile" category="App views" }}
+
+    {{#staggering}}
+
+    <div class="content">
+
+        {{#if isPatient}}
+
+        {{> pUser}}
+
+        {{else}}
+
+        {{> medicalProvider}}
+
+        {{/if}}
+
+
+    </div>
+
+    {{/staggering}}
+
+</template>

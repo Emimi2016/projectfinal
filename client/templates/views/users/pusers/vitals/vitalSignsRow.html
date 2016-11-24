@@ -1,0 +1,45 @@
+<template name="vitalSignsRow">
+    <tr>
+        <td> 
+            <input type="text" name="weight{{id}}" id="weight{{id}}" value="{{weight}}"> 
+        </td>
+        <td> 
+            <input type="text" name="height{{id}}" id="height{{id}}" value="{{height}}">
+        </td>
+        <td> 
+            <input type="text" name="bmi{{id}}" id="bmi{{id}}" value="{{bmi}}">
+        </td>
+        <td> 
+            <input type="text" name="bp{{id}}" id="bp{{id}}" value="{{bp}}">
+        </td>
+        <td> 
+            <input type="text" name="pulse{{id}}" id="pulse{{id}}" value="{{pulse}}">
+        </td>
+        <td> 
+            <input type="text" name="respiration{{id}}" id="respiration{{id}}" value="{{respiration}}">
+        </td>
+        <td> 
+            <input type="text" name="temperature{{id}}" id="temperature{{id}}" value="{{temperature}}">
+        </td>
+        <td> 
+            <div class="input-group date">
+                    <span style="" class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                <input class="form-control" type="text" name="formatedDate{{id}}" id="formatedDate{{id}}" value="{{formatedDate}}" style="width: 225px;">
+            </div>
+            <!--
+            <input type="text" name="formatedDate{{id}}" id="formatedDate{{id}}" value="{{formatedDate}}" style="width: 225px;">-->
+        </td>
+        {{#unless isPatient}}
+            <td>
+                <button class="btn btn-info edit-vital-sign" type="button" data-id={{id}}>
+                    <i class="fa fa-paste"></i> Edit
+                </button>
+                <button class="btn btn-danger remove-vital-sign" type="button" data-id={{id}}>
+                    <i class="fa fa-trash-o"></i> <span class="bold">Delete</span>
+                </button>
+            </td>
+        {{/unless}}
+    </tr>
+</template>

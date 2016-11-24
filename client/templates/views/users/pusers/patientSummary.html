@@ -1,0 +1,15 @@
+<template name="patientSummary">
+    <tr>
+        <td><input type="checkbox" class="i-checks" checked data-pk="1"  data-id={{_id}} ></td>
+        <td>{{persodata.lname}}</td>
+        <td>{{persodata.fname}}</td>
+        <td>{{persodata.gender}}</td>
+        <td>{{formatedDob}}</td>
+        <td>{{persodata.city}}</td>
+        <td>{{persodata.address}}</td>
+        <td>
+            <button class="btn btn-info edit-patient" type="button" data-id={{_id}}><i class="fa fa-paste"></i> <span class="bold">Edit</span></button>
+            <button class="btn btn-danger remove-patient" type="button" data-id={{_id}}><i class="fa fa-trash-o"></i> <span class="bold">Delete</span></button>
+        </td>
+    </tr>
+</template>

@@ -1,0 +1,19 @@
+<template name="dashboard">
+    {{> pageHeader title="Dashboard" category="App views" }}
+
+    {{#staggering}}
+
+        <div class="content">
+            {{#if isPatient}}
+            <!-- Patient -->
+            {{> dashboardPatient }}
+
+            {{else}}
+            <!-- Doctor -->
+            {{> dashboardDoctor }}
+
+            {{/if}}
+
+        </div>
+    {{/staggering}}
+</template>

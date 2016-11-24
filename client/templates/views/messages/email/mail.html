@@ -1,0 +1,13 @@
+<template name="mail">
+    <tr class="{{status}}" data-id={{_id}}>
+        <td class="{{status}}">
+            <div class="checkbox checkbox-single checkbox-success">
+                <input type="checkbox">
+                <label></label>
+            </div>
+        </td>
+        <td><a href="#">{{from}}</a></td>
+        <td><a href="#">{{subject}}</a></td>
+        <td class="text-right mail-date">{{formatdate}}</td>
+    </tr>
+</template>

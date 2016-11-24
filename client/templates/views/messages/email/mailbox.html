@@ -1,0 +1,68 @@
+<template name="mailbox">
+    {{> pageHeader title="Mailbox" desc="Mailbox - Email list." category="App views" }}
+
+    {{#staggering}}
+
+    <div class="content">
+
+        <div class="row">
+            <div class="col-md-3">
+                {{> leftMailPanel parent='mailbox'}}
+            </div>
+            <div class="col-md-9">
+                <div class="hpanel">
+                    <div class="panel-heading hbuilt">
+                            <div class="btn-group">
+                                <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Mark as unread</a></li>
+                                    <li><a href="#">Filter messages like these</a></li>
+                                </ul>
+                            </div>
+                        <div class="text-center p-xs font-normal">
+                            <div class="input-group"><input type="text" class="form-control input-sm" placeholder="Search email in your inbox..."> <span class="input-group-btn"> <button type="button" class="btn btn-sm btn-default">Search
+                            </button> </span></div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6 m-b-md">
+                                <div class="btn-group">
+                                    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Refresh</button>
+                                    <button class="btn btn-default btn-sm"><i class="fa fa-eye"></i></button>
+                                    <button class="btn btn-default btn-sm"><i class="fa fa-exclamation"></i></button>
+                                    <button class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                                    <button class="btn btn-default btn-sm"><i class="fa fa-check"></i></button>
+                                    <button class="btn btn-default btn-sm"><i class="fa fa-tag"></i></button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mailbox-pagination m-b-md">
+                                <div class="btn-group">
+                                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i></button>
+                                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-mailbox">
+                                <tbody>
+                                    {{#each mails}}
+                                        {{> mail}}
+                                    {{/each}}
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <i class="fa fa-eye"> </i> {{nbMessagesNotRead}} unread
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {{/staggering}}
+
+</template>

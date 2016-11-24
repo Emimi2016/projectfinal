@@ -1,0 +1,69 @@
+<template name="leftMailPanel">
+    <div class="hpanel">
+        <div class="panel-body">
+        <a id="msg" class="btn btn-success btn-block m-b-md" href="{{pathFor route='emailCompose'}}">Compose</a>
+            <ul class="mailbox-list">
+                <li class="{{inboxClass}}">
+                    <a href="{{pathFor route='mailbox'}}">
+                        <span class="pull-right">{{nbInbox}}</span>
+                        <i class="fa fa-envelope"></i> Inbox
+                    </a>
+                </li>
+                <li class="{{sentClass}}">
+                    <a href="{{pathFor route='mailsent'}}">
+                        <span class="pull-right">{{nbSent}}</span>
+                        <i class="fa fa-paper-plane"></i> Sent
+                    </a>
+                </li>
+                <li class="{{draftClass}}">
+                    <a href="{{pathFor route='maildraft'}}">
+                        <span class="pull-right">{{nbSent}}</span>
+                        <i class="fa fa-pencil"></i> Draft</a>
+                </li>
+                <li class="{{trashClass}}">
+                    <a href="{{pathFor route='mailtrash'}}">
+                        <span class="pull-right">{{nbSent}}</span>
+                        <i class="fa fa-trash"></i> Trash</a>
+                </li>
+                 <li class="">
+                    <a href="#">
+                        <i class="fa fa-folder"></i> Labels</a>
+                </li>
+                {{#each folders}}
+                  <li class="all-labels">
+                    <a href="{{pathFor route='mailfolder'}}" id={{id}}><i class="fa fa-folder-o"></i> {{name}}</a>
+                </li>
+                {{/each}}
+                <hr>
+                <li>
+                    <a href="#" class="btn btn-link" id="linkEditFolder" style="text-align:left;">Manage folder</a>
+                </li>
+                <li>
+                    <a href="#" class="btn btn-link" id="linkAddFolder" style="text-align:left;">Create new folder</a>
+                </li>
+            </ul>
+            <hr>
+            <ul class="mailbox-list">
+                <!--<li>-->
+                    <!--<a href="#"><i class="fa fa-heartbeat text-danger"></i> Medical</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#"><i class="fa fa-bar-chart text-warning"></i> Bills</a>-->
+                <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="#"><i class="fa fa-users text-info"></i> Social</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#"><i class="fa fa-tag text-success"></i> Promos</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#"><i class="fa fa-flag text-primary"></i> Updates</a>-->
+                <!--</li>-->
+            </ul>
+
+
+
+        </div>
+
+    </div>
+</template>

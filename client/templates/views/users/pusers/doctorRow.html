@@ -1,0 +1,13 @@
+<template name="doctorRow">
+    <tr>
+        <td>{{persodata.fname}}</td>
+        <td>{{persodata.lname}}</td>
+        <td>{{persodata.gender}}</td>
+        <td>{{persodata.speciality}}</td>
+        <td>{{persodata.city}}</td>
+        <td>{{persodata.country}}</td>
+        <td>{{persodata.language}}</td>
+
+        <td><button type="button" class="btn btn-primary sendRequest" data-id="{{_id}}">Send request</button></td>
+    </tr>
+</template>

@@ -1,0 +1,104 @@
+<template name="emailCompose">
+
+    {{> pageHeader title="Compose email" desc="Mailbox - Email compose." category="App views" }}
+
+    {{#staggering}}
+
+        <div class="content">
+
+            <div class="row">
+                <div class="col-md-3">
+                    {{> leftMailPanel}}
+                </div>
+                <div class="col-md-9">
+                    <div class="hpanel email-compose">
+                        <div class="panel-heading hbuilt">
+                            <div class="p-xs h4">
+                                {{mailTitle}}
+                            </div>
+                        </div>
+                        <div class="panel-heading hbuilt">
+                            <div class="p-xs">
+                                <form method="get" class="form-horizontal">
+                                    <div class="form-group"><label class="col-sm-2 control-label text-left">To:</label>
+
+                                        <div class="col-sm-8">
+
+                                        {{#if isDoctor}}
+                                            <input
+                                                class="form-control input-sm typeahead"
+                                                name="userTo"
+                                                id="userTo"
+                                                type="text"
+                                                placeholder="Patient's name"
+                                                autocomplete="off"
+                                                spellcheck="off"
+                                                data-source="users"
+                                                data-select="selected"
+                                                value="{{to}}" />
+                                        {{else}}
+                                                <input
+                                                    class="form-control input-sm typeahead"
+                                                    name="userTo"
+                                                    id="userTo"
+                                                    type="text"
+                                                    placeholder="Doctor's name"
+                                                    autocomplete="off"
+                                                    spellcheck="off"
+                                                    data-source="users"
+                                                    data-select="selected"
+                                                    value="{{to}}" />
+                                        {{/if}}
+
+                                        </div>
+
+
+                                    </div><!--
+                                    <div class="form-group"><label class="col-sm-1 control-label text-left">Cc:</label>
+
+                                        <div class="col-sm-11"><input type="text" class="form-control input-sm"></div>
+                                    </div>-->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-left">Subject: </label>
+                                        <div class="col-sm-8"><input type="text" class="form-control input-sm typeahead" id="subject" placeholder="Enter Email subject" value="{{subject}}"></div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="panel-body no-padding">
+                            <div class="summernote" id="message">
+                            </div>
+                        </div>
+
+                        <div class="panel-footer">
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button class="btn btn-default" id="saveDraft"><i class="fa fa-edit"></i> Save</button>
+                                    <button class="btn btn-default" id="markurgent"><i class="fa fa-urgent"></i> urgent</button>
+                                    <button class="btn btn-default" id="discard"><i class="fa fa-trash"></i> Discard</button>
+                                </div>
+                            </div>
+                             {{#unless isPatient}}
+                                 <th>Actions</th>
+                            {{/unless}}
+                            <button class="btn btn-primary" id="sendMail">Send email</button>
+                            <div class="btn-group">
+                                <button class="btn btn-default" id="fileatt"><i class="fa fa-paperclip"></i> </button>
+                                <!--<button class="btn btn-default"><i class="fa fa-image"></i> </button>-->
+                            </div>
+<input type="file" name="filedialog" id="filedialog" accept=".doc, .docx, .xsl, .xslx, .pdf, .png, .jpeg, .tff, .gif" />
+<!--accept=".doc, .docx, .xsl, .xslx, .png, .jpeg, .tff, .gif|documents" />-->
+                        </div>
+
+                        <div id="attachments">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    {{/staggering}}
+</template>

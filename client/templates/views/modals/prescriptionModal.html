@@ -1,0 +1,88 @@
+<template name="prescriptionModal">
+    <div class="modal fade" id="newPrescription" tabindex="-1" role="dialog" aria-labelledby="Prescription">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="color-line"></div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Prescriptions</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="newPrescriptionForm">
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="preActive">Active</h4>
+                            <div class="divider"></div>
+                            <input style="width: 30px" class="form-control" type="checkbox" name="preActive" id="preActive" required>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="vitalDate">Starting Date</h4>
+                            <div class="divider"></div>
+                            <div class="input-group date" id="preStartDateGroup">
+                                    <span style="" class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                <input class="form-control" type="text" id="preStartDate" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="preDrug">Drug</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="preDrug" id="preDrug" required>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="preQuantity">Quantity</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="preQuantity" id="preQuantity" required>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="preMedUnits">Medicine units</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="preMedUnits" id="preMedUnits" required>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="preDesc">Description</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="preDesc" id="preDesc" required>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="preRefills">Refills</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="preRefills" id="preRefills">
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="preNotes">Notes</h4>
+                            <div class="divider"></div>
+                            <input class="form-control" type="text" name="preNotes" id="preNotes">
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="preSub">Allow substitution</h4>
+                            <div class="divider"></div>
+                            <input style="width: 30px" class="form-control" type="checkbox" name="preSub" id="preSub">
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="control-label custom-h3" for="preMedList">Add to medication list</h4>
+                            <div class="divider"></div>
+                            <input style="width: 30px" class="form-control" type="checkbox" name="preMedList" id="preMedList">
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button id="prescriptionButton" type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,23 @@
+<template name="healthProblems">
+    <div class="table-responsive ">
+        <table id="healthProblemsTable" class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Diagnostic</th>
+                <th>Symptoms</th>
+                <th>Medical Observation</th>
+                <th>Disease Name</th>
+                <th>Date</th>
+                {{#unless isPatient}}
+                <th>Actions</th>
+                {{/unless}}
+            </tr>
+            </thead>
+            <tbody>
+                {{#each healthProblems}}
+                    {{> healthProblemRow}}
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>

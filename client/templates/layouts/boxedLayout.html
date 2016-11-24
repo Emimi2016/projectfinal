@@ -1,0 +1,31 @@
+<template name="boxedLayout">
+
+    <!-- Splash screen -->
+    {{>splash }}
+
+    <div class="boxed-wrapper">
+
+        <!-- Header -->
+        {{> header }}
+
+        <!-- Navigation -->
+        {{> navigation }}
+
+        <!-- Main Wrapper -->
+        <div id="wrapper">
+            {{> yield}}
+
+            <!-- Right sidebar -->
+            {{> rightSidebar }}
+
+            <!-- Footer -->
+            {{> footer }}
+        </div>
+
+    </div>
+    
+    <script type="text/javascript" src="/dataTables/datatables.min.js"></script>
+    <script type="text/javascript" src="/xeditable/bootstrap3-editable/js/bootstrap-editable.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/select/1.1.2/js/dataTables.select.min.js"></script>
+
+</template>
