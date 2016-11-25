@@ -6,24 +6,24 @@
                 <li class="{{inboxClass}}">
                     <a href="{{pathFor route='mailbox'}}">
                         <span class="pull-right">{{nbInbox}}</span>
-                        <i class="fa fa-envelope"></i> Inbox
+                        <i class="fa fa-envelope"></i> Boite de reception
                     </a>
                 </li>
                 <li class="{{sentClass}}">
                     <a href="{{pathFor route='mailsent'}}">
                         <span class="pull-right">{{nbSent}}</span>
-                        <i class="fa fa-paper-plane"></i> Sent
+                        <i class="fa fa-paper-plane"></i> Message envoye
                     </a>
                 </li>
                 <li class="{{draftClass}}">
                     <a href="{{pathFor route='maildraft'}}">
                         <span class="pull-right">{{nbSent}}</span>
-                        <i class="fa fa-pencil"></i> Draft</a>
+                        <i class="fa fa-pencil"></i> Brouillon</a>
                 </li>
                 <li class="{{trashClass}}">
                     <a href="{{pathFor route='mailtrash'}}">
                         <span class="pull-right">{{nbSent}}</span>
-                        <i class="fa fa-trash"></i> Trash</a>
+                        <i class="fa fa-trash"></i> Poubelle</a>
                 </li>
                  <li class="">
                     <a href="#">
@@ -36,10 +36,10 @@
                 {{/each}}
                 <hr>
                 <li>
-                    <a href="#" class="btn btn-link" id="linkEditFolder" style="text-align:left;">Manage folder</a>
+                    <a href="#" class="btn btn-link" id="linkEditFolder" style="text-align:left;">Manage dossier</a>
                 </li>
                 <li>
-                    <a href="#" class="btn btn-link" id="linkAddFolder" style="text-align:left;">Create new folder</a>
+                    <a href="#" class="btn btn-link" id="linkAddFolder" style="text-align:left;">Create nouveau dossier</a>
                 </li>
             </ul>
             <hr>
