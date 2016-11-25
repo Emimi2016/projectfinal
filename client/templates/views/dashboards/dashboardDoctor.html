@@ -10,13 +10,27 @@
                                 <tr>
                                     <th>First Name</th>
                                     <th>Last Name</th>
-                                    <th>City</th>
-                                </tr>
+                                             <th>Gender</th>
+                                            
+                                    <th>DOB</th>
+                </tr>
                                 </thead>
+                                <tbody>
+                                   {{#each patients}} 
+                                   {{> patientSummary}}
+                                    {{/each}} 
+                                        <tr>
+                                               <td>{{persodata.lname}}</td>
+        <td>{{persodata.fname}}</td>
+        <td>{{persodata.gender}}</td>
+        <td>{{formatedDob}}</td>
+                                        </tr>
+                                </tbody>
                             </table>
                         </div>
-                   {{/panel}}
-                  </div> 
+                    {{/panel}}
+                   </div> 
+
                    
                   <div class="col-sm-12 col-md-8">
                     {{#panel title="My appointment"}}
