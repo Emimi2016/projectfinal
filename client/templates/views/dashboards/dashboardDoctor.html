@@ -8,14 +8,26 @@
                             <table id="patients" cellpadding="1" cellspacing="1" class="table table-condensed">
                                 <thead>
                                 <tr>
+                                    <th>Last name</th>
                                     <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>City</th>
+                                    <th>DOB</th>
                                 </tr>
                                 </thead>
+                                         <tbody>
+                                   {{#each patients}} 
+                                   {{> patient}}
+                                    {{/each}} 
+                                        <tr>
+                                                <td>{{persodata.lname}}</td>
+        <td>{{persodata.fname}}</td>
+        <td>{{persodata.gender}}</td>
+        <td>{{formatedDob}}</td>
+   
+                                        </tr>
+                                </tbody>
                             </table>
                         </div>
-                   {{/panel}}
+                                              {{/panel}}
                   </div> 
                    
                   <div class="col-sm-12 col-md-8">
