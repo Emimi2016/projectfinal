@@ -1,5 +1,5 @@
 <template name="doctor">
-    {{> pageHeader title="My Doctor's data" category="App views" }}
+    {{> pageHeader title="Mon Pharmacien" category="App views" }}
 
     {{#staggering}}
 
@@ -10,7 +10,7 @@
                         <div class="hpanel">
                             <ul class="nav nav-tabs">
                                 <li class="active">
-                                    <a data-toggle="tab" href="#tab-1">Contact information</a>
+                                    <a data-toggle="tab" href="#tab-1">Contact</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -19,27 +19,27 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <p>
-                                                    <h4>Date of registration:</h4>
+                                                    <h4>Date de registration:</h4>
                                                     <span class="text-info">{{dor}}</span>
                                                 </p>
                                                 <div class="divider"></div>
                                                 <form class="form-horizontal">
                                                     <div class="form-group">
-                                                        <label class="col-sm-2 control-label" for="docFName">First Name</label>
+                                                        <label class="col-sm-2 control-label" for="docFName">Prenom</label>
                                                         <div class="col-sm-4">
                                                             <input value="{{doctor.persodata.fname}}" class="form-control" type="text" name="docFName" id="docFName" disabled>
                                                         </div>
-                                                        <label class="col-sm-2 control-label" for="docLName">Last Name</label>
+                                                        <label class="col-sm-2 control-label" for="docLName">Nom</label>
                                                         <div class="col-sm-4">
-                                                            <input value="{{doctor.persodata.lname}}" class="form-control" type="text" name="docLName" id="docLName" disabled>
+                                                            <!-- <input value="{{doctor.persodata.lname}}" class="form-control" type="text" name="docLName" id="docLName" disabled>
                                                         </div>
                                                         <label class="col-sm-2 control-label" for="docGender">Gender</label>
                                                         <div class="col-sm-4">
                                                             <input value="{{doctor.persodata.gender}}" class="form-control" type="text" name="docGender" id="docGender" disabled>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
 
-                                                    <div class="form-group">
+                                                    <!-- <div class="form-group">
                                                         <label class="col-sm-2 control-label" for="docspeciality">speciality</label>
                                                         <div class="col-sm-4">
                                                             <input value="{{doctor.persodata.speciality}}" class="form-control" type="text" name="docSpeciality" id="docSpeciality" disabled>
@@ -52,22 +52,22 @@
                                                         <div class="col-sm-4">
                                                             <input value="{{doctor.persodata.country}}" class="form-control" type="text" name="docCountry" id="docCountry" disabled>
                                                         </div>
-                                                    </div>
+                                                    </div>-->
                                                     <p class="text-center">
-                                                        <b>Working hours</b>
+                                                        <b>Horaire</b>
                                                     </p>
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label" for="sunday">Sunday Slot 1</label>
+                                                        <label class="col-sm-3 control-label" for="sunday">Dimanche matin</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'sunday'}}" class="form-control" type="text" name="sunday" id="sunday" disabled>
                                                         </div>
                                                         
-                                                        <label class="col-sm-3 control-label" for="sunday">Sunday Slot 2</label>
+                                                        <label class="col-sm-3 control-label" for="sunday">Dimanche apres-midi</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'sundays2'}}" class="form-control" type="text" name="sundays2" id="sundays2" disabled>
                                                         </div>
                                                         
-                                                        <label class="col-sm-3 control-label" for="sunday">Sunday Slot 3</label>
+                                                        <!-- <label class="col-sm-3 control-label" for="sunday">Sunday Slot 3</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'sundays3'}}" class="form-control" type="text" name="sundays3" id="sundays3" disabled>
                                                         </div>
@@ -75,38 +75,38 @@
                                                         <label class="col-sm-3 control-label" for="sunday">Sunday Slot 4</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'sundays4'}}" class="form-control" type="text" name="sundays4" id="sundays4" disabled>
-                                                        </div>
+                                                        </div>-->
                                                         
-                                                        <label class="col-sm-3 control-label" for="monday">Monday Slot 1</label>
+                                                        <label class="col-sm-3 control-label" for="monday">Lundi matin</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'monday'}}" class="form-control" type="text" name="monday" id="monday" disabled>
                                                         </div>
                                                         
-                                                        <label class="col-sm-3 control-label" for="monday">Monday Slot 2</label>
+                                                        <label class="col-sm-3 control-label" for="monday">Lundi apres-midi</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'mondays2'}}" class="form-control" type="text" name="mondays2" id="mondays2" disabled>
                                                         </div>
                                                         
-                                                         <label class="col-sm-3 control-label" for="monday">Monday Slot 3</label>
+                                                         <!-- <label class="col-sm-3 control-label" for="monday">Monday Slot 3</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'mondays3'}}" class="form-control" type="text" name="mondays3" id="mondays3" disabled>
-                                                        </div>
+                                                        </div>-->
                                                         
                 
                                                         
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label" for="tuesday">Tuesday Slot 1</label>
+                                                        <label class="col-sm-3 control-label" for="tuesday">Mardi matin</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'tuesday'}}" class="form-control" type="text" name="tuesday" id="tuesday" disabled>
                                                         </div>
                                                         
-                                                         <label class="col-sm-3 control-label" for="tuesday">Tuesday Slot 2</label>
+                                                         <label class="col-sm-3 control-label" for="tuesday">Mardi apres-midi</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'tuesdays2'}}" class="form-control" type="text" name="tuesdays2" id="tuesdays2" disabled>
                                                         </div>
                                                         
-                                                        <label class="col-sm-3 control-label" for="tuesday">Tuesday Slot 3</label>
+                                                        <!-- <label class="col-sm-3 control-label" for="tuesday">Tuesday Slot 3</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'tuesdays3'}}" class="form-control" type="text" name="tuesdays3" id="tuesdays3" disabled>
                                                         </div>
@@ -114,19 +114,19 @@
                                                         <label class="col-sm-3 control-label" for="tuesday">Tuesday Slot 4</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'tuesdays4'}}" class="form-control" type="text" name="tuesdays4" id="tuesdays4" disabled>
-                                                        </div>
+                                                        </div>-->
                                                         
-                                                        <label class="col-sm-3 control-label" for="wednesday">Wednesday</label>
+                                                        <label class="col-sm-3 control-label" for="wednesday">Mercredi matin</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'wednesday'}}" class="form-control" type="text" name="wednesday" id="wednesday" disabled>
                                                         </div>
                                                         
-                                                        <label class="col-sm-3 control-label" for="wednesday">Wednesday Slot 1</label>
+                                                        <label class="col-sm-3 control-label" for="wednesday">Mercredi apres-midi</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'wednesday'}}" class="form-control" type="text" name="wednesday" id="wednesday" disabled>
                                                         </div>
                                                         
-                                                        <label class="col-sm-3 control-label" for="wednesday">Wednesday Slot 2</label>
+                                                        <!-- <label class="col-sm-3 control-label" for="wednesday">Wednesday Slot 2</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'wednesdays2'}}" class="form-control" type="text" name="wednesdays2" id="wednesdays2" disabled>
                                                         </div>
@@ -139,21 +139,21 @@
                                                         <label class="col-sm-3 control-label" for="wednesday">Wednesday Slot 4</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'wednesdays4'}}" class="form-control" type="text" name="wednesdays4" id="wednesdays4" disabled>
-                                                        </div>
+                                                        </div>-->
                                                         
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label" for="thursday">Thursday Slot 1</label>
+                                                        <label class="col-sm-3 control-label" for="thursday">Jeudi matin</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'thursday'}}" class="form-control" type="text" name="thursday" id="thursday" disabled>
                                                         </div>
                                                         
-                                                       <label class="col-sm-3 control-label" for="thursday">Thursday Slot 2</label>
+                                                       <label class="col-sm-3 control-label" for="thursday">Jeudi apres-mdi</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'thursdays2'}}" class="form-control" type="text" name="thursdays2" id="thursdays2" disabled>
                                                         </div>
                                                         
-                                                         <label class="col-sm-3 control-label" for="thursday">Thursday Slot 3</label>
+                                                         <!-- <label class="col-sm-3 control-label" for="thursday">Thursday Slot 3</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'thursdays3'}}" class="form-control" type="text" name="thursdays3" id="thursdays3" disabled>
                                                         </div>
@@ -161,19 +161,19 @@
                                                          <label class="col-sm-3 control-label" for="thursday">Thursday Slot 4</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'thursdays4'}}" class="form-control" type="text" name="thursdays4" id="thursdays4" disabled>
-                                                        </div>
+                                                        </div>-->
                                                         
-                                                        <label class="col-sm-3 control-label" for="friday">Friday Slot 1</label>
+                                                        <label class="col-sm-3 control-label" for="friday">Vendredi matin</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'friday'}}" class="form-control" type="text" name="friday" id="friday" disabled>
                                                         </div>
                                                         
-                                                         <label class="col-sm-3 control-label" for="friday">Friday Slot 2</label>
+                                                         <label class="col-sm-3 control-label" for="friday">Vendredi apresmidi</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'fridays2'}}" class="form-control" type="text" name="fridays2" id="fridays2" disabled>
                                                         </div>
                                                         
-                                                         <label class="col-sm-3 control-label" for="friday">Friday Slot 3</label>
+                                                         <!-- <label class="col-sm-3 control-label" for="friday">Friday Slot 3</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'fridays3'}}" class="form-control" type="text" name="fridays3" id="fridays3" disabled>
                                                         </div>
@@ -181,21 +181,21 @@
                                                          <label class="col-sm-3 control-label" for="friday">Friday Slot 4</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'fridays4'}}" class="form-control" type="text" name="fridays4" id="fridays4" disabled>
-                                                        </div>
+                                                        </div>-->
                                                         
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label" for="saturday">Saturday Slot 1</label>
+                                                        <label class="col-sm-3 control-label" for="saturday">Samedi matin</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'saturday'}}" class="form-control" type="text" name="saturday" id="saturday" disabled>
                                                         </div>
                                                         
-                                                        <label class="col-sm-3 control-label" for="saturday">Saturday Slot 2</label>
+                                                        <label class="col-sm-3 control-label" for="saturday">Samedi apres-midi</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'saturdays2'}}" class="form-control" type="text" name="saturdays2" id="saturdays2" disabled>
                                                         </div>
                                                         
-                                                        <label class="col-sm-3 control-label" for="saturday">Saturday Slot 3</label>
+                                                        <!-- <label class="col-sm-3 control-label" for="saturday">Saturday Slot 3</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'saturdays3'}}" class="form-control" type="text" name="saturdays3" id="saturdays3" disabled>
                                                         </div>
@@ -203,7 +203,7 @@
                                                         <label class="col-sm-3 control-label" for="saturday">Saturday Slot 4</label>
                                                         <div class="col-sm-3">
                                                             <input value="{{workHours 'saturdays4'}}" class="form-control" type="text" name="saturdays4" id="saturdays4" disabled>
-                                                        </div>
+                                                        </div>-->
                                                         
                                                         
                                                     </div>
@@ -220,8 +220,8 @@
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <strong>Warning!</strong>
-                            You must choose your doctor first!
+                            <strong>Attention!</strong>
+                            Vous devez chisir votre pharmacien!
                         </div>
                     {{/if}}
                     {{#panel title="" built=true color="hblue"}}
@@ -231,13 +231,10 @@
                             <table id="doctorsTable" class="table table-striped table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>First name</th>
-                                    <th>Last Name</th>
-                                    <th>Gender</th>
-                                    <th>Speciality</th>
-                                    <th>City</th>
-                                    <th>Country</th>
-                                    <th>Language</th>
+                                    <th>Prenom</th>
+                                    <th>Nom</th>
+                                    <th>Addresse</th>
+                                    <th>Ville</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
