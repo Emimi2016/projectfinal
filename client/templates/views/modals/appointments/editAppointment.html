@@ -7,73 +7,73 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title">Edit appointment</h4>
+                    <h4 class="modal-title">Changez RDV</h4>
                 </div>
                 <div class="modal-body">
                     <form role="form" id="modForm" method="post" action="#">
                         <div class="form-group">
-                            <h4 class="control-label custom-h3">Appointment summary</h4>
+                            <h4 class="control-label custom-h3">Resumé du RDV</h4>
                             <div class="divider"></div>
                             <ul>
-                                <li><b>Start date:</b> {{formatedStartDate}}</li>
-                                <li><b>End date:</b> {{formatedEndDate}}</li>
-                                <li><b>Health issues:</b> {{healthIssues}}</li>
-                                <li><b>Comments:</b> {{comments}}</li>
-                                <li><b>Visit type:</b> {{visitType}} visit</li>
+                                <li><b>De:</b> {{formatedStartDate}}</li>
+                                <li><b>A:</b> {{formatedEndDate}}</li>
+                                <li><b>Probleme de Sante:</b> {{healthIssues}}</li>
+                                <li><b>Commentaire:</b> {{comments}}</li>
+                                <li><b>Type de visite:</b> {{visitType}} visit</li>
                             </ul>
                         </div>
                         {{#if noResponse}}
                         <p class="text-warning">
-                            The other party did not respond yet. Please wait or:
+                            Votre demande est en attente, veuillez attendre ou bien:
                         </p>
                         <div class="form-group">
-                            <h4 class="control-label custom-h3">Do you want to cancel appointment?</h4>
+                            <h4 class="control-label custom-h3">Annulez votre RDV?</h4>
                             <div class="radio radio-success">
                                 <input type="radio" name="cancelation" id="yes" value="yes">
-                                <label>Yes</label>
+                                <label>Oui</label>
                             </div>
                             <div class="radio radio-success">
                                 <input type="radio" name="cancelation" id="no" value="no">
-                                <label>No</label>
+                                <label>Non</label>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button id="reqAppointmentButton" type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermez</button>
+                            <button id="reqAppointmentButton" type="submit" class="btn btn-primary">Sauvegardez</button>
                         </div>
                         {{else}}
                         {{#if noNewDates}}
                         <div class="form-group">
-                            <h4 class="control-label custom-h3" for="confirmation">Do you want to confirm appointment?</h4>
+                            <h4 class="control-label custom-h3" for="confirmation">Voulez vous confirmer vore RDV?</h4>
                             <div class="radio radio-success">
                                 <input type="radio" name="confirmation" id="confirmed" value="yes">
-                                <label>Yes</label>
+                                <label>Oui</label>
                             </div>
                             <div class="radio radio-success">
                                 <input type="radio" name="confirmation" id="canceled" value="no">
-                                <label>No</label>
+                                <label>Non</label>
                             </div>
                         </div>
                         {{else}}
                         {{#if modification}}
                         <div class="form-group">
-                            <h4 class="control-label custom-h3" for="modification">Do you want to cancel or modify appointment?</h4>
+                            <h4 class="control-label custom-h3" for="modification">Voulez vous annuler ou changer votre RDV?</h4>
                             <div class="radio radio-success">
                                 <input type="radio" name="modification" id="modCancel" value="cancel">
-                                <label>Cancel</label>
+                                <label>Annulez</label>
                             </div>
                             <div class="radio radio-success">
                                 <input type="radio" name="modification" id="modEdit" value="edit">
-                                <label>Modify</label>
+                                <label>Modifiez</label>
                             </div>
                         </div>
                         {{#if confirmed}}
-                        <p class="text-danger">Warning! You are about to modify already confirmed appointment.</p>
+                        <p class="text-danger">Attention! Vous voulez changez un RDV.</p>
                         {{/if}}
                         {{else}}
                         <div class="form-group">
-                            <p class="text-info">The other party did not confirm
-                                your date for appointment, instead new dates are proposed.<br>Please pick one</p>
+                            <p class="text-info">RDV non confirmé
+                                d´autre dates sont proposées.<br>Choisissez celle qui vous convient</p>
                             {{#if newDate1}}
                             <div class="radio radio-success">
                                 <input type="radio" name="newDates" id="newDate1" value="{{newDate1}}">
@@ -97,11 +97,11 @@
                         <div class="form-group">
                             <div class="radio radio-success">
                                 <input type="radio" name="newDates" id="modCancel" value="cancel">
-                                <label class="text-danger">Cancel the appointment</label>
+                                <label class="text-danger">Annulez le RDV</label>
                             </div>
                             <div class="radio radio-success">
                                 <input type="radio" name="newDates" id="modEdit" value="edit">
-                                <label class="text-warning">Propose your new dates for appointment</label>
+                                <label class="text-warning">Proposez d´autre dates pour le RDV</label>
                             </div>
                         </div>
                         {{/if}}
@@ -110,8 +110,8 @@
                             {{> newDates}}
                         {{/if}}
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <button id="reqAppointmentButton" type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Annulez</button>
+                            <button id="reqAppointmentButton" type="submit" class="btn btn-primary">Sauvegardez</button>
                         </div>
                         {{/if}}
                     </form>
