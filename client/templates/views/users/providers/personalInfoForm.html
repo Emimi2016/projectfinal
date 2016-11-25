@@ -3,12 +3,12 @@
         <input type="hidden" name="MAX_FILE_SIZE" value="100000">
 
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="firstName">First Name</label>
+            <label class="col-sm-2 control-label" for="firstName">Prenom</label>
             <div class="col-sm-4">
                 <input class="form-control" type="text" name="firstName" id="firstName" value="{{persodata.fname}}" required>
             </div>
 
-            <label class="col-sm-2 control-label" for="lastName">Last Name</label>
+            <label class="col-sm-2 control-label" for="lastName">Nom</label>
             <div class="col-sm-4">
                 <input class="form-control" type="text" name="lastName" id="lastName" value="{{persodata.lname}}" required>
             </div>
@@ -16,22 +16,22 @@
         
          {{#if patient}}
         <div class="form-group">
-            <label class="col-sm-2 control-label">Gender</label>
+            <label class="col-sm-2 control-label">Sexe</label>
             <div class="col-sm-3">
                 <div class="radio radio-male">
                     <input type="radio" name="gender" id="male" value="M" {{checkGender 'M'}}>
-                    <label>Male</label>
+                    <label>Homme</label>
                 </div>
                 <div class="radio radio-female">
                     <input type="radio" name="gender" id="female" value="F" {{checkGender 'F'}}>
-                    <label>Female</label>
+                    <label>Femme</label>
                 </div>
              </div>
           </div> 
              {{/if}}
         
-        {{#unless patient}}
-        <div class="form-group">
+           <!-- {{#unless patient}}
+          <div class="form-group">
             <label class="col-sm-2 control-label">Gender</label>
             <div class="col-sm-3">
                 <div class="radio radio-male">
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-        {{/unless}}
+        {{/unless}}-->
         
 	{{#if patient}}
 	 <div class="form-group">
@@ -69,55 +69,59 @@
             </div>
         </div>
         <div class="form-group hidden" id="minor">
-            <label class="col-sm-2 control-label" for="mothersName">Mothers Name</label>
+            <label class="col-sm-2 control-label" for="mothersName">Nom Prenom de la mere</label>
             <div class="col-sm-4">
                 <input class="form-control" type="text" name="mothersName" id="mothersName" value="{{persodata.mothersName}}" required="">
             </div>
-            <label class="col-sm-2 control-label" for="fathersName">Fathers Name</label>
+            <label class="col-sm-2 control-label" for="fathersName">Nom Prenom du pere</label>
             <div class="col-sm-4">
                 <input class="form-control" type="text" name="fathersName" id="fathersName" value="{{persodata.fathersName}}" required="">
             </div>
         </div>
         {{/if}}
         
-        {{#unless patient}}
+           <!-- {{#unless patient}}
         <div class="form-group">
             <label class="col-sm-2 control-label" for="speciality">Speciality</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control"  name="speciality" id="speciality" value="{{persodata.speciality}}">
             </div>
         </div>
-        {{/unless}}
+        {{/unless}}-->
  
         <div class="form-group">
-            <label class="col-sm-2 control-label" for ="city">City</label>
+		 <label class="col-sm-2 control-label" for ="address">Adresse</label>
+            <div class="col-sm-10">
+                 <input class="form-control" type="text" name="address" id="city" value="{{persodata.address}}" required>
+            </div>
+            <label class="col-sm-2 control-label" for ="city">Ville</label>
             <div class="col-sm-4">
                  <input class="form-control" type="text" name="city" id="city" value="{{persodata.city}}" required>
             </div>
-            <label class="col-sm-2 control-label" for ="country">Country</label>
+               <!-- <label class="col-sm-2 control-label" for ="country">Country</label>
             <div class="col-sm-4">
                  <input class="form-control" type="text" name="country" id="country" value="{{persodata.country}}" required>
             </div>
-        </div>
+        </div>-->
 
-        <div class="form-group">
+         <!-- <div class="form-group">
             <label class="col-sm-2 control-label" for ="language">language</label>
             <div class="col-sm-10">
                 <input class="form-control" type="text" name="language" id="language" value="{{persodata.language}}" required>
             </div>
-        </div>
+        </div>-->
 
         {{#unless patient}}
         <div class="hr-line-dashed"></div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Work Schedule</label>
+            <label class="col-sm-2 control-label">Horaire</label>
             <div class="col-sm-10">
 			
 	 <div class="form-group">
 	 	<div class="col-sm-5">			
 					<div class="checkbox checkbox-single checkbox-success">
                     <input value="80" type="checkbox" name="workingDays" id="sundays2" {{checkWorkDay 'sundays2'}}>
-                    <label> Sundays Session 2</label>
+                    <label> Dimanche matin</label>
                 </div>
                 <div class="row hidden" id="sundays2-workingHours">
                     <div class="col-sm-5">
@@ -144,7 +148,7 @@
 				
 					<div class="checkbox checkbox-single checkbox-success">
                     <input value="81" type="checkbox" name="workingDays" id="sundays3" {{checkWorkDay 'sundays3'}}>
-                    <label> Sundays Session 3</label>
+                    <label> Dimanche apres-midi</label>
                 </div>
                 <div class="row hidden" id="sundays3-workingHours">
                     <div class="col-sm-5">
@@ -167,7 +171,7 @@
                     </div>
                 </div>
 				
-				<div class="checkbox checkbox-single checkbox-success">
+				<!-- <div class="checkbox checkbox-single checkbox-success">
                     <input value="82" type="checkbox" name="workingDays" id="sundays4" {{checkWorkDay 'sundays4'}}>
                     <label> Sundays Session 4</label>
                 </div>
@@ -215,13 +219,13 @@
                             </span>
                         </div>
                     </div>
-                </div>
+                </div>-->
          </div>       
 		
 		<div class="col-sm-5">		
 					<div class="checkbox checkbox-single checkbox-success">
                     <input value="31" type="checkbox" name="workingDays" id="mondays2" {{checkWorkDay 'mondays2'}}>
-                    <label> Mondays Session 2</label>
+                    <label> Lundi matin</label>
                 </div>
                 <div class="row hidden" id="mondays2-workingHours">
                     <div class="col-sm-5">
@@ -248,7 +252,7 @@
 				
 					<div class="checkbox checkbox-single checkbox-success">
                     <input value="32" type="checkbox" name="workingDays" id="mondays3" {{checkWorkDay 'mondays3'}}>
-                    <label> Mondays Session 3</label>
+                    <label> Lundi apres-midi</label>
                 </div>
                 <div class="row hidden" id="mondays3-workingHours">
                     <div class="col-sm-5">
@@ -271,7 +275,7 @@
                     </div>
                 </div>
 				
-				<div class="checkbox checkbox-single checkbox-success">
+				<!-- <div class="checkbox checkbox-single checkbox-success">
                     <input value="33" type="checkbox" name="workingDays" id="mondays4" {{checkWorkDay 'mondays4'}}>
                     <label> Mondays Session 4</label>
                 </div>
@@ -320,7 +324,7 @@
                             </span>
                         </div>
                     </div>
-                </div>
+                </div>-->
          </div>
         </div>
 				
@@ -328,7 +332,7 @@
 	 	<div class="col-sm-5">
 					<div class="checkbox checkbox-single checkbox-success">
                     <input value="41" type="checkbox" name="workingDays" id="tuesdays2" {{checkWorkDay 'tuesdays2'}}>
-                    <label> Tuesday Session 2</label>
+                    <label> Mardi matin</label>
                 </div>
                 <div class="row hidden" id="tuesdays2-workingHours">
                     <div class="col-sm-5">
@@ -355,7 +359,7 @@
 				
 					<div class="checkbox checkbox-single checkbox-success">
                     <input value="42" type="checkbox" name="workingDays" id="tuesdays3" {{checkWorkDay 'tuesdays3'}}>
-                    <label> Tuesday Session 3</label>
+                    <label> Mardi apres-midi</label>
                 </div>
                 <div class="row hidden" id="tuesdays3-workingHours">
                     <div class="col-sm-5">
@@ -378,7 +382,7 @@
                     </div>
                 </div>
 				
-				<div class="checkbox checkbox-single checkbox-success">
+				<!-- <div class="checkbox checkbox-single checkbox-success">
                     <input value="43" type="checkbox" name="workingDays" id="tuesdays4" {{checkWorkDay 'tuesdays4'}}>
                     <label> Tuesday Session 4</label>
                 </div>
@@ -427,13 +431,13 @@
                             </span>
                         </div>
                     </div>
-                </div>
+                </div>-->
              </div>   
 				
 		<div class="col-sm-5">		
 				<div class="checkbox checkbox-single checkbox-success">
                     <input value="72" type="checkbox" name="workingDays" id="wednesdays2" {{checkWorkDay 'wednesdays2'}}>
-                    <label> Wednesday Session 2</label>
+                    <label> Mercredi matin</label>
                 </div>
                 <div class="row hidden" id="wednesdays2-workingHours">
                     <div class="col-sm-5">
@@ -460,7 +464,7 @@
 				
 					<div class="checkbox checkbox-single checkbox-success">
                     <input value="73" type="checkbox" name="workingDays" id="wednesdays3" {{checkWorkDay 'wednesdays3'}}>
-                    <label> Wednesday Session 3</label>
+                    <label> Mercredi apres-midi</label>
                 </div>
                 <div class="row hidden" id="wednesdays3-workingHours">
                     <div class="col-sm-5">
@@ -483,7 +487,7 @@
                     </div>
                 </div>
 				
-				<div class="checkbox checkbox-single checkbox-success">
+				<!-- <div class="checkbox checkbox-single checkbox-success">
                     <input value="74" type="checkbox" name="workingDays" id="wednesdays4" {{checkWorkDay 'wednesdays4'}}>
                     <label> Wednesday Session 4</label>
                 </div>
@@ -531,7 +535,7 @@
                             </span>
                         </div>
                     </div>
-                </div>
+                </div>-->
          </div>
         </div> 
 	
@@ -539,7 +543,7 @@
 	 	<div class="col-sm-5">			
 				<div class="checkbox checkbox-single checkbox-success">
                     <input value="82" type="checkbox" name="workingDays" id="thursdays2" {{checkWorkDay 'thursdays2'}}>
-                    <label> Thursday Session 2</label>
+                    <label> Jeudi matin</label>
                 </div>
                 <div class="row hidden" id="thursdays2-workingHours">
                     <div class="col-sm-3">
@@ -566,7 +570,7 @@
 				
 					<div class="checkbox checkbox-single checkbox-success">
                     <input value="83" type="checkbox" name="workingDays" id="thursdays3" {{checkWorkDay 'thursdays3'}}>
-                    <label> Thursday Session 3</label>
+                    <label> Jeudi apres-midi</label>
                 </div>
                 <div class="row hidden" id="thursdays3-workingHours">
                     <div class="col-sm-5">
@@ -589,7 +593,7 @@
                     </div>
                 </div>
 				
-				<div class="checkbox checkbox-single checkbox-success">
+				<!-- <div class="checkbox checkbox-single checkbox-success">
                     <input value="84" type="checkbox" name="workingDays" id="thursdays4" {{checkWorkDay 'thursdays4'}}>
                     <label> Thursday Session 4</label>
                 </div>
@@ -637,13 +641,13 @@
                             </span>
                         </div>
                     </div>
-                </div>
+                </div>-->
                </div> 
 		
 		<div class="col-sm-5">		
 				<div class="checkbox checkbox-single checkbox-success">
                     <input value="112" type="checkbox" name="workingDays" id="fridays2" {{checkWorkDay 'fridays2'}}>
-                    <label> Friday Session 2</label>
+                    <label> Vendredi matin</label>
                 </div>
                 <div class="row hidden" id="fridays2-workingHours">
                     <div class="col-sm-5">
@@ -670,7 +674,7 @@
 				
 					<div class="checkbox checkbox-single checkbox-success">
                     <input value="113" type="checkbox" name="workingDays" id="fridays3" {{checkWorkDay 'fridays3'}}>
-                    <label> Friday Session 3</label>
+                    <label> Vendredi apres-midi</label>
                 </div>
                 <div class="row hidden" id="fridays3-workingHours">
                     <div class="col-sm-5">
@@ -693,7 +697,7 @@
                     </div>
                 </div>
 				
-				<div class="checkbox checkbox-single checkbox-success">
+				<!-- <div class="checkbox checkbox-single checkbox-success">
                     <input value="114" type="checkbox" name="workingDays" id="fridays4" {{checkWorkDay 'fridays4'}}>
                     <label> Friday Session 4</label>
                 </div>
@@ -742,13 +746,13 @@
                             </span>
                         </div>
                     </div>
-                </div>
+                </div>-->
          </div>
        </div>  
 				
 				<div class="checkbox checkbox-single checkbox-success">
                     <input value="112" type="checkbox" name="workingDays" id="saturdays2" {{checkWorkDay 'saturdays2'}}>
-                    <label> Saturday Session 2</label>
+                    <label> Samedi matin</label>
                 </div>
                 <div class="row hidden" id="saturdays2-workingHours">
                     <div class="col-sm-5">
@@ -775,7 +779,7 @@
 				
 					<div class="checkbox checkbox-single checkbox-success">
                     <input value="113" type="checkbox" name="workingDays" id="saturdays3" {{checkWorkDay 'saturdays3'}}>
-                    <label> Saturday Session 3</label>
+                    <label> Samedi apres-midi</label>
                 </div>
                 <div class="row hidden" id="saturdays3-workingHours">
                     <div class="col-sm-5">
@@ -798,7 +802,7 @@
                     </div>
                 </div>
 				
-				<div class="checkbox checkbox-single checkbox-success">
+				<!-- <div class="checkbox checkbox-single checkbox-success">
                     <input value="114" type="checkbox" name="workingDays" id="saturdays4" {{checkWorkDay 'saturdays4'}}>
                     <label> Saturday Session 4</label>
                 </div>
@@ -847,7 +851,7 @@
                             </span>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
         <div class="hr-line-dashed"></div>
@@ -856,12 +860,12 @@
         {{#if patient}}
 
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="homeNumber">Home number</label>
+            <label class="col-sm-2 control-label" for="homeNumber">Tel fixe</label>
             <div class="col-sm-4">
                 <input class="form-control" type="text" name="homeNumber" id="homeNumber" value="{{persodata.homeNumber}}">
             </div>
 
-            <label class="col-sm-2 control-label" for="mobileNumber">Mobile number</label>
+            <label class="col-sm-2 control-label" for="mobileNumber">Portable</label>
             <div class="col-sm-4">
                 <input class="form-control" type="text" name="mobileNumber" id="mobileNumber" value="{{persodata.mobileNumber}}">
             </div>
@@ -872,23 +876,23 @@
             <div class="col-sm-4">
                 <input type="email" placeholder="Enter email" class="form-control" required="" aria-required="true" name="email" id="email" value="{{persodata.email}}">
             </div>
-            <label class="col-sm-2 control-label">Skype</label>
+            <!-- <label class="col-sm-2 control-label">Skype</label>
             <div class="col-sm-4">
                 <input type="skype" placeholder="Enter skype account" class="form-control" required="" aria-required="true" name="skype" id="skype" value="{{persodata.skype}}">
-            </div>
+            </div>-->
         </div>
 
 
         <div class="hr-line-dashed"></div>
         <p class="text-center">
-            <b>Person to call in case of emergency</b>
+            <b>Personne á contacter en cas d´urgence</b>
         </p>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="emergencyName">Name</label>
+            <label class="col-sm-2 control-label" for="emergencyName">Nom Prenom</label>
             <div class="col-sm-4">
                 <input class="form-control" type="text" name="emergencyName" id="emergencyName" value="{{persodata.emergencyName}}">
             </div>
-            <label class="col-sm-2 control-label" for="emergencyNumber">Phone Number</label>
+            <label class="col-sm-2 control-label" for="emergencyNumber">Tel</label>
             <div class="col-sm-4">
                 <input class="form-control" type="text" name="emergencyNumber" id="emergencyNumber" value="{{persodata.emergencyNumber}}">
             </div>
@@ -901,7 +905,7 @@
 
         <div class="form-group">
             <div class="col-sm-8 col-sm-offset-2">
-                <button class="btn btn-primary" id="persoInfoBtn" type="submit">Save changes</button>
+                <button class="btn btn-primary" id="persoInfoBtn" type="submit">Sauvegardez</button>
             </div>
         </div>
         <input id="zero" type="text" value="0" hidden="hidden" />
