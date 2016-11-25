@@ -45,14 +45,13 @@ Template.calendar.helpers({
                     event['start'] = appObj.startDate;
                     event['end'] = appObj.endDate;
                     event['status'] = appObj.status;
-                    event['pay'] = appObj.pay;
                     return event;
                 });
                 callback(eventsArray);
             },
             select: function(start, end, allDay) {
                 Modal.show('reqNewAppointmentModal');
-                $('#dateInfo').html('You requested your appointment on: ' +
+                $('#dateInfo').html('Demande de RDV le : ' +
                 start.format('MMMM Do YYYY, h:mm:ss a') + '-' +
                 end.format('h:mm:ss a'));
                 $('#appStartDate').val(start);
@@ -65,17 +64,17 @@ Template.calendar.helpers({
                     })
                 } else if (event.status && event.status === 'canceled') {
                     swal({
-                        title: 'Appointment canceled!',
-                        text: 'This appointment has been canceled.',
+                        title: 'RDV annulé!',
+                        text: 'le RDV a été annulé.',
                         allowEscapeKey: false,
                         closeOnCancel: false,
                         closeOnConfirm: true,
-                        type: 'warning'
+                        type: 'Attention'
                     });
                 } else {
                     swal({
-                        title: 'Doctor is busy',
-                        text: 'Someone has already scheduled appointment.',
+                        title: 'occupé',
+                        text: 'Plage horaire occupé.',
                         allowEscapeKey: false,
                         closeOnCancel: false,
                         closeOnConfirm: true,
