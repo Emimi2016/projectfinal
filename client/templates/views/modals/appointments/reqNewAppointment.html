@@ -7,24 +7,24 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">Request new appointment</h4>
+                    <h4 class="modal-title" id="myModalLabel">Demande de RDV</h4>
                 </div>
                 <div class="modal-body">
                     <p id="dateInfo"></p>
                     <form role="form"  id="reqAppointmentForm" method="post" action="#">
                         <div class="form-group">
-                            <h4 class="control-label custom-h3" for="appHealthIssues">State the health issues</h4>
+                            <h4 class="control-label custom-h3" for="appHealthIssues">Raison</h4>
                             <div class="divider"></div>
                             <input class="form-control" type="text" name="appHealthIssues" id="appHealthIssues" required>
                         </div>
                         <div class="form-group">
-                            <h4 class="control-label custom-h3" for="appComments">Comments</h4>
+                            <h4 class="control-label custom-h3" for="appComments">Commentaire</h4>
                             <div class="divider"></div>
                             <input class="form-control" type="text" name="appComments" id="appComments" required>
                         </div>
                         {{#unless isPatient}}
                         <div class="form-group">
-                            <h4 class="control-label custom-h3" for="patient">Choose Patient</h4>
+                            <h4 class="control-label custom-h3" for="patient">Selectionnez Patient</h4>
                             <div class="divider"></div>
                             <input class="form-control typeahead"
                                    name="patient"
