@@ -29,6 +29,35 @@
                             </table>
                         </div>
                     {{/panel}}
+                          
+                        {{#panel title="Prescriptions" panelClass="" footer=""}}
+                        <div class="table-responsive">
+                            <table id="prescriptions" cellpadding="1" cellspacing="1" class="table table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Medicaments</th>
+                                    <th>Quantites</th>
+                                    <th>Med. Units</th>
+                                    <th>Renouvellement</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {{#with medicalRecord}}
+                                        {{#each prescriptions}}
+                                        <tr>
+                                            <td>{{formatedStartDate}}</td>
+                                            <td>{{drug}}</td>
+                                            <td>{{quantity}}</td>
+                                            <td>{{medUnits}}</td>
+                                            <td>{{refills}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    {{/with}}
+                                </tbody>
+                            </table>
+                        </div>
+                    {{/panel}}
                     </div>
 
                 <div class="col-md-4">
@@ -81,39 +110,7 @@
                             </div>
                         </a>
                         {{/panel}}
-                    </div>
-  
-            
-            <div class="col-sm-12 col-md-8">
-                    {{#panel title="Prescriptions" panelClass="" footer=""}}
-                        <div class="table-responsive">
-                            <table id="prescriptions" cellpadding="1" cellspacing="1" class="table table-condensed">
-                                <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Medicaments</th>
-                                    <th>Quantites</th>
-                                    <th>Med. Units</th>
-                                    <th>Renouvellement</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    {{#with medicalRecord}}
-                                        {{#each prescriptions}}
-                                        <tr>
-                                            <td>{{formatedStartDate}}</td>
-                                            <td>{{drug}}</td>
-                                            <td>{{quantity}}</td>
-                                            <td>{{medUnits}}</td>
-                                            <td>{{refills}}</td>
-                                        </tr>
-                                        {{/each}}
-                                    {{/with}}
-                                </tbody>
-                            </table>
-                        </div>
-                    {{/panel}}
-                </div>
+            </div>
                 </div>
             
 </template>
